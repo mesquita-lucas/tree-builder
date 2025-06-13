@@ -1,24 +1,24 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
 #include "exprparser.h"
 #include "string.h"
 
 char get_value_of(char* expression){
     // todo: validation
+    if(expression[1] == ')') return NULL; // não possui filho
 
     return expression[1];
 }
 
-int is_valid(char* expression){
-    int parenthesis_balance = 0; 
-}
+void get_children(char* leftchild_buff, char* rightchild_buff, char* expression){
+    expression = expression + 3;  /*(A,(),()) <- pula os primeiros três caracteres*/
+    
+    extract(leftchild_buff, expression);
 
-void get_children(char* leftchild, char* rightchild, char* expression){
-    extract(leftchild, expression);
+    expression = expression + strlen(leftchild_buff) + 1;
 
-    expression = expression + strlen(leftchild) + 1;
-
-    extract(rightchild, expression);
+    extract(rightchild_buff, expression); 
 }
 
 void extract(char* child, char* expression){

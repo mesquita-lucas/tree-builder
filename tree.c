@@ -2,7 +2,6 @@
 #include "exprparser.h"
 #include "stdio.h"
 #include "stdlib.h"
-#include "exprparser.h"
 
 t_binary_tree* create(char* expression){
     //todo: parse to know if the expression is valid
@@ -11,13 +10,35 @@ t_binary_tree* create(char* expression){
 
     t_binary_tree* tree = (t_binary_tree*)malloc(sizeof(t_binary_tree));
 
-    t_node* root = create_node(get_value(expression));
-
+    t_node* root = build_tree(expression);
     tree->root = root;
     tree->height = 0;
 
+    
+
     return tree;
 }
+
+t_node* build_tree(char* expression){
+    if(!expression || !get_value_of(expression)) {
+        return NULL;
+    }
+
+    char* leftchild = (char*)malloc((strlen(expression) + 1) * sizeof(char));
+    char* rightchild = (char*)malloc((strlen(expression) + 1) * sizeof(char));
+
+    get_children(leftchild, rightchild, expression);
+
+    t_node* root_node = create_node(get_value_of(expression));
+
+    root_node->right = build_tree(rightchild);
+    root_node->left = build_tree(leftchild);
+
+    free(rightchild);
+    free(leftchild);
+
+    return root_node;
+} 
 
 t_node* create_node(char letter){
     //todo: validate if is valid char

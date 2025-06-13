@@ -5,7 +5,6 @@
 #include "string.h"
 
 char get_value_of(char* expression){
-    // todo: validation
     if(expression[1] == ')') return '\0'; // não possui filho
 
     return expression[1];

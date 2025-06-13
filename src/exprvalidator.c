@@ -1,6 +1,7 @@
-#include "exprvalidator.h"
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
+#include "exprvalidator.h"
 
 const int LEGAL_ELEMENT_FOLLOWUPS[NUM_ELEMENT_TYPES][NUM_ELEMENT_TYPES] = {
     // element           ( | ) | , |char

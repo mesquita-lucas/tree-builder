@@ -3,11 +3,12 @@
 #include <stdlib.h>
 #include "tree.h"
 #include "exprparser.h"
+#include "exprvalidator.h"
 
 t_binary_tree* create(char* expression){
-    //todo: parse to know if the expression is valid
-    
-    //create after validation
+    if(!is_a_valid_expression(expression)){
+        return NULL;
+    }
 
     t_binary_tree* tree = (t_binary_tree*)malloc(sizeof(t_binary_tree));
 
@@ -18,10 +19,6 @@ t_binary_tree* create(char* expression){
 }
 
 t_node* build_tree(char* expression, int current_height){
-    if(!expression || !get_value_of(expression)) {
-        return NULL;
-    }
-
     if(get_value_of(expression) == '\0') {
         return NULL;
     }
@@ -43,8 +40,6 @@ t_node* build_tree(char* expression, int current_height){
 } 
 
 t_node* create_node(char letter, int height){
-    //todo: validate if is valid char
-
     t_node* node = (t_node*)malloc(sizeof(t_node));
     node->item = letter;
     node->height = height;
@@ -97,7 +92,7 @@ void print_for_testing(t_binary_tree* tree){
         printf("Árvore vazia.\n");
         return;
     }
-    
+
     printf("Impressão em Pré-Ordem: ");
     pre_order(tree->root);
     printf("\n");

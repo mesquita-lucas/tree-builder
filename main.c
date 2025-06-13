@@ -5,21 +5,6 @@
 #include "exprparser.h" // Contém protótipos de parsing
 
 int main() {
-    // A expressão de exemplo fornecida
-    // (A,(B,(),()),(C,(F,(),()),()))
-    // Raiz: A
-    // Filho esquerdo de A: (B,(),())
-    //   Raiz: B
-    //   Filho esquerdo de B: () (NULL)
-    //   Filho direito de B: () (NULL)
-    // Filho direito de A: (C,(F,(),()),())
-    //   Raiz: C
-    //   Filho esquerdo de C: (F,(),())
-    //     Raiz: F
-    //     Filho esquerdo de F: () (NULL)
-    //     Filho direito de F: () (NULL)
-    //   Filho direito de C: () (NULL)
-
     char expression_string[] = "(A,(B,(),()),(C,(F,(),()),()))";
     printf("Expressão de entrada: \"%s\"\n\n", expression_string);
 

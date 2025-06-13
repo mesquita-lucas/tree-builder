@@ -6,7 +6,7 @@
 
 char get_value_of(char* expression){
     // todo: validation
-    if(expression[1] == ')') return NULL; // não possui filho
+    if(expression[1] == ')') return '\0'; // não possui filho
 
     return expression[1];
 }
@@ -24,8 +24,6 @@ void get_children(char* leftchild_buff, char* rightchild_buff, char* expression)
 void extract(char* child, char* expression){
     int count_parenthesis_pair = 0; 
 
-    char* child_addr = child;
-
     do{
         if(*expression == '(') count_parenthesis_pair++;
 
@@ -35,7 +33,7 @@ void extract(char* child, char* expression){
 
         expression++;
         child++;
-    } while(count_parenthesis_pair != 0);
+    } while(count_parenthesis_pair != 0 && *expression != '\0');
 
     *child = '\0';
 }

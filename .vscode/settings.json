@@ -1,6 +1,8 @@
 {
     "C_Cpp.default.compilerPath": "C:/msys64/ucrt64/bin/gcc.exe",
     "files.associations": {
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "ctype.h": "c",
+        "cstdlib": "c"
     }
 }

@@ -10,12 +10,13 @@ typedef struct _node{
 
 typedef struct _binary_tree{
     t_node* root;
-    t_node* height;
 } t_binary_tree;
 
 t_binary_tree* create(char* expression);
 
-t_node* create_node(char letter);
+t_node* build_tree(char* expression, int current_height);
+
+t_node* create_node(char letter, int height);
 
 void pre_order(t_node* tree_root);
 
@@ -25,6 +26,6 @@ void post_order(t_node* tree_root);
 
 int height_of(t_node* node);
 
-void print(t_binary_tree* tree);
+void print_for_testing(t_binary_tree* tree);
 
 #endif

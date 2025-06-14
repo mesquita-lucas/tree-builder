@@ -28,4 +28,5 @@ int height_of(t_node* node);
 
 void print(t_node* tree_root, int level);
 
+void free_tree(t_node* tree_root);
 #endif

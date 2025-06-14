@@ -19,7 +19,7 @@ t_binary_tree* create(char* expression){
 }
 
 t_node* build_tree(char* expression, int current_height){
-    if(get_value_of(expression) == '\0') {
+    if(get_value_of(expression) == '\0' || strlen(expression) < MINIMUN_CHARACTER_COUNT) {
         return NULL;
     }
 
@@ -92,7 +92,7 @@ void print(t_node* tree_root, int level){
         return;
     }
 
-    print_tree_vertical(tree_root->right, level + 1);
+    print(tree_root->right, level + 1);
 
     for (int i = 0; i < level; i++) {
         printf("    "); 
@@ -103,7 +103,12 @@ void print(t_node* tree_root, int level){
     print(tree_root->left, level + 1);
 }
 
+void free_tree(t_node* tree_root){
+    if(tree_root == NULL){
+        return;
+    }
 
-void exit(){
-
+    free_tree(tree_root->left);
+    free_tree(tree_root->right);
+    free(tree_root);
 }

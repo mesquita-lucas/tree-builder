@@ -26,6 +26,6 @@ void post_order(t_node* tree_root);
 
 int height_of(t_node* node);
 
-void print_for_testing(t_binary_tree* tree);
+void print(t_node* tree_root, int level);
 
 #endif

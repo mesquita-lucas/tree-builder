@@ -30,8 +30,8 @@ t_node* build_tree(char* expression, int current_height){
 
     t_node* root_node = create_node(get_value_of(expression), current_height);
 
-    root_node->right = build_tree(rightchild, current_height + 1);
     root_node->left = build_tree(leftchild, current_height + 1);
+    root_node->right = build_tree(rightchild, current_height + 1);
 
     free(rightchild);
     free(leftchild);
@@ -64,9 +64,9 @@ void in_order(t_node* tree_root){
         return;
     }
 
-    pre_order(tree_root->left);
+    in_order(tree_root->left);
     printf("%c ", tree_root->item);
-    pre_order(tree_root->right);
+    in_order(tree_root->right);
 }
 
 void post_order(t_node* tree_root){
@@ -74,8 +74,8 @@ void post_order(t_node* tree_root){
         return;
     }
 
-    pre_order(tree_root->left);
-    pre_order(tree_root->right);
+    post_order(tree_root->left);
+    post_order(tree_root->right);
     printf("%c ", tree_root->item);
 }
 
@@ -87,13 +87,23 @@ int height_of(t_node* node){
     return node->height;
 }
 
-void print_for_testing(t_binary_tree* tree){
-    if (tree == NULL || tree->root == NULL) {
-        printf("Árvore vazia.\n");
+void print(t_node* tree_root, int level){
+    if(tree_root == NULL) {
         return;
     }
 
-    printf("Impressão em Pré-Ordem: ");
-    pre_order(tree->root);
-    printf("\n");
+    print_tree_vertical(tree_root->right, level + 1);
+
+    for (int i = 0; i < level; i++) {
+        printf("    "); 
+    }
+
+    printf("%c\n", tree_root->item);
+    
+    print(tree_root->left, level + 1);
+}
+
+
+void exit(){
+
 }

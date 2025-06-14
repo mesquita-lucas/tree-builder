@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
 #include "exprparser.h"
-#include "string.h"
 
 char get_value_of(char* expression){
     if(expression[1] == ')') return '\0'; // não possui filho

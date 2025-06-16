@@ -29,15 +29,15 @@ t_node* find_node(t_node* root, char item) {
 int main() {
     char input[MAX_INPUT_SIZE];
 
-    printf("Binary Tree Builder\n");
-    printf("Comandos disponíveis:\n");
-    printf("create (expression)\n");
-    printf("pre\n");
-    printf("in\n");
-    printf("post\n");
-    printf("height <node>\n");
-    printf("print\n");
-    printf("exit\n");
+    printf("-----Binary Tree Builder-----\n");
+    printf("> Comandos disponíveis:\n");
+    printf("> create (expression)\n");
+    printf("> pre\n");
+    printf("> in\n");
+    printf("> post\n");
+    printf("> height <node>\n");
+    printf("> print\n");
+    printf("> exit\n");
 
     while(1) {
         printf("> ");
@@ -56,7 +56,7 @@ int main() {
                 free(tree);
                 tree = NULL;
             }
-            
+
             tree = create(expr);
 
             if(tree == NULL) {

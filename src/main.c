@@ -56,7 +56,7 @@ int main() {
                 free(tree);
                 tree = NULL;
             }
-
+            
             tree = create(expr);
 
             if(tree == NULL) {
@@ -99,6 +99,7 @@ int main() {
             } else {
                 char node_char = input[7];
                 t_node* node = find_node(tree->root, node_char);
+                
                 if(node == NULL) {
                     printf("Node '%c' not found.\n", node_char);
                 } else {

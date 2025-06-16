@@ -18,11 +18,17 @@ int is_a_valid_expression(char* expression){
     }
 
     int verify_parenthesis_balance = 0;
+    int verify_parenthesis_number = 0;
+    int count_number_of_nodes = 0;
     for(int i = 0; i < EXPR_SIZE; i++){
         expr_elements curr_elem = get_element_type(expression[i]);
         
         if(curr_elem == OPEN_PAREN) verify_parenthesis_balance++;
         if(curr_elem == CLOSE_PAREN) verify_parenthesis_balance--;
+
+        if(curr_elem == OPEN_PAREN || curr_elem == CLOSE_PAREN) verify_parenthesis_number++;
+
+        if(curr_elem == CHAR) count_number_of_nodes++;
 
         if(i < EXPR_SIZE - 1){
             expr_elements next_elem = get_element_type(expression[i+1]);
@@ -40,6 +46,12 @@ int is_a_valid_expression(char* expression){
     if(verify_parenthesis_balance != 0) {
         return 0;
     }
+
+    int required_parenthesis_number = (count_number_of_nodes * 4) + 2; //por regra, cada expressão tem (n*4) + 2 parenteses, sendo n o número de nós
+
+    if(verify_parenthesis_number != required_parenthesis_number) {
+        return 0;
+    }   
 
     return 1;
 }
